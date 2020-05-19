@@ -1,0 +1,10 @@
+cache
+chains
+keys
+network
+signer
+/geth
+jsonrpc.ipc
+*.key
+*.keystore
+/pass.txt

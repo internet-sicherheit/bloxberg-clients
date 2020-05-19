@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  parity:
+    image: parity/parity:stable
+    volumes:
+      - ./:/home/parity/.local/share/io.parity.ethereum/
+      - ./bloxberg.json:/home/parity/.local/share/io.parity.ethereum/bloxberg.json
+      - ./bootnodes.txt:/home/parity/.local/share/io.parity.ethereum/bootnodes.txt
+      - ./bloxberg.keystore:/home/parity/.local/share/io.parity.ethereum/keys/Bloxberg/bloxberg.keystore
+      - ./pass.txt:/home/parity/.local/share/io.parity.ethereum/pass.txt
+    working_dir: /home/parity/.local/share/io.parity.ethereum/
+    command: --chain bloxberg.json --reserved-peers bootnodes.txt --jsonrpc-interface all --unlock 0x14ec473ebc862e35a404cc2b70356aaf7f369cac --password pass.txt
+    ports:
+      - 8545:8545
+      - 8546:8546
+      - 30303:30303
+      - 30303:30303/udp
+
